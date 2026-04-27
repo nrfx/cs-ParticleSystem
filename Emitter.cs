@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public int MousePositionY;
         public float GravitationX = 0;
         public float GravitationY = 1;
+        public int ParticlesCount = 500;
 
         public void UpdateState()
         {
@@ -43,7 +44,7 @@ namespace WindowsFormsApp1
             }
             for (var i = 0; i < 10; ++i)
             {
-                if (particles.Count < 500) // пока частиц меньше 500 генерируем новые
+                if (particles.Count < ParticlesCount) // пока частиц меньше 500 генерируем новые
                 {
                     var particle = new ParticleColorful();
                     particle.FromColor = Color.White;

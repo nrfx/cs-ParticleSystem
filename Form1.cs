@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        Emitter emitter = new Emitter();
+        Emitter emitter;
         List<Particle> particles = new List<Particle>();
         private int MousePositionX = 0;
         private int MousePositionY = 0;
@@ -22,6 +22,12 @@ namespace WindowsFormsApp1
             InitializeComponent();
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+            emitter = new TopEmitter
+            {
+                Width = picDisplay.Width,
+                GravitationY = 0.25f
+            };
+            /*
             emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.25),
@@ -40,7 +46,7 @@ namespace WindowsFormsApp1
             {
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
-            });
+            });*/
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
