@@ -22,15 +22,6 @@ namespace WindowsFormsApp1
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-            for (var i = 0; i < 500; ++i)
-            {
-                var particle = new Particle();
-                // переношу частицы в центр изображения
-                particle.X = picDisplay.Image.Width / 2;
-                particle.Y = picDisplay.Image.Height / 2;
-                // добавляю список
-                particles.Add(particle);
-            }
         }
         private void UpdateState()
         {
@@ -45,16 +36,33 @@ namespace WindowsFormsApp1
                     // перемещаю частицу в центр
                     particle.X = MousePositionX;
                     particle.Y = MousePositionY;
-                    particle.Direction = Particle.rand.Next(360);
-                    particle.Speed = 1 + Particle.rand.Next(10);
+                    var direction = (double)Particle.rand.Next(360);
+                    var speed = 1 + Particle.rand.Next(10);
+
+                    particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
+                    particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
                     particle.Radius = 2 + Particle.rand.Next(10);
                 }
                 else
                 {
-                    // а это наш старый код
-                    var directionInRadians = particle.Direction / 180 * Math.PI;
-                    particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
-                    particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
+                    particle.X += particle.SpeedX;
+                    particle.Y += particle.SpeedY;
+                }
+            }
+            for (var i = 0; i < 10; ++i)
+            {
+                if (particles.Count < 500) // пока частиц меньше 500 генерируем новые
+                {
+                    var particle = new ParticleColorful();
+                    particle.FromColor = Color.Yellow;
+                    particle.ToColor = Color.FromArgb(0, Color.Magenta);
+                    particle.X = MousePositionX;
+                    particle.Y = MousePositionY;
+                    particles.Add(particle);
+                }
+                else
+                {
+                    break; // а если частиц уже 500 штук, то ничего не генерирую
                 }
             }
         }
