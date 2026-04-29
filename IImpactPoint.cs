@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         // например притягивать
         public abstract void ImpactParticle(Particle particle);
 
+        public virtual void BeforeUpdate() { }
         // базовый класс для отрисовки точечки
         public virtual void Render(Graphics g)
         {

@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         public float GravitationX = 0;
         public float GravitationY = 1;
         public int ParticlesCount = 500;
+        public float WindX = 0; // постоянная горизонтальная сила (управляется стрелками)
+        public float WindY = 0; // постоянная вертикальная сила
 
         public int X; // координата X центра эмиттера, будем ее использовать вместо MousePositionX
         public int Y; // соответствующая координата Y 
@@ -42,11 +44,16 @@ namespace WindowsFormsApp1
         }
         public void UpdateState()
         {
+            foreach (var point in impactPoints)
+            {
+                point.BeforeUpdate();
+            }
             int particlesToCreate = ParticlesPerTick;
             foreach (var particle in particles)
             {
-                particle.Life -= 1; // уменьшаю здоровье
-                                    // если здоровье кончилось
+                particle.Life -= 1;
+                // уменьшаю здоровье
+                // если здоровье кончилось
                 if (particle.Life <= 0)
                 {
                     ResetParticle(particle);
@@ -58,6 +65,11 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
+                    particle.SpeedX += WindX;
+                    particle.SpeedY += WindY;
+                    particle.X += particle.SpeedX;
+                    particle.Y += particle.SpeedY;
+
                     foreach (var point in impactPoints)
                     {
                         point.ImpactParticle(particle);
@@ -67,8 +79,6 @@ namespace WindowsFormsApp1
                     particle.SpeedX += GravitationX;
                     particle.SpeedY += GravitationY;
 
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
                 }
             }
             while (particlesToCreate >= 1)

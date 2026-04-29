@@ -33,12 +33,12 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tbDirection = new System.Windows.Forms.TrackBar();
             this.lblDirection = new System.Windows.Forms.Label();
-            this.tbGraviton = new System.Windows.Forms.TrackBar();
-            this.tbGraviton2 = new System.Windows.Forms.TrackBar();
+            this.tbSpread = new System.Windows.Forms.TrackBar();
+            this.cbWind = new System.Windows.Forms.CheckBox();
+            this.cbBlackHole = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGraviton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGraviton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSpread)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -73,31 +73,49 @@
             this.lblDirection.Size = new System.Drawing.Size(0, 16);
             this.lblDirection.TabIndex = 2;
             // 
-            // tbGraviton
+            // tbSpread
             // 
-            this.tbGraviton.Location = new System.Drawing.Point(282, 382);
-            this.tbGraviton.Maximum = 100;
-            this.tbGraviton.Name = "tbGraviton";
-            this.tbGraviton.Size = new System.Drawing.Size(176, 56);
-            this.tbGraviton.TabIndex = 3;
-            this.tbGraviton.Scroll += new System.EventHandler(this.tbGraviton_Scroll);
+            this.tbSpread.Location = new System.Drawing.Point(248, 382);
+            this.tbSpread.Maximum = 360;
+            this.tbSpread.Name = "tbSpread";
+            this.tbSpread.Size = new System.Drawing.Size(163, 56);
+            this.tbSpread.TabIndex = 3;
+            this.tbSpread.Scroll += new System.EventHandler(this.tbSpread_Scroll);
             // 
-            // tbGraviton2
+            // cbWind
             // 
-            this.tbGraviton2.Location = new System.Drawing.Point(464, 382);
-            this.tbGraviton2.Maximum = 100;
-            this.tbGraviton2.Name = "tbGraviton2";
-            this.tbGraviton2.Size = new System.Drawing.Size(173, 56);
-            this.tbGraviton2.TabIndex = 4;
-            this.tbGraviton2.Scroll += new System.EventHandler(this.tbGraviton2_Scroll);
+            this.cbWind.AutoSize = true;
+            this.cbWind.Checked = true;
+            this.cbWind.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbWind.Location = new System.Drawing.Point(471, 396);
+            this.cbWind.Name = "cbWind";
+            this.cbWind.Size = new System.Drawing.Size(69, 20);
+            this.cbWind.TabIndex = 4;
+            this.cbWind.Text = "Ветер";
+            this.cbWind.UseVisualStyleBackColor = true;
+            this.cbWind.CheckedChanged += new System.EventHandler(this.cbWind_CheckedChanged);
+            // 
+            // cbBlackHole
+            // 
+            this.cbBlackHole.AutoSize = true;
+            this.cbBlackHole.Checked = true;
+            this.cbBlackHole.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbBlackHole.Location = new System.Drawing.Point(606, 396);
+            this.cbBlackHole.Name = "cbBlackHole";
+            this.cbBlackHole.Size = new System.Drawing.Size(113, 20);
+            this.cbBlackHole.TabIndex = 5;
+            this.cbBlackHole.Text = "Черная дыра";
+            this.cbBlackHole.UseVisualStyleBackColor = true;
+            this.cbBlackHole.CheckedChanged += new System.EventHandler(this.cbBlackHole_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tbGraviton2);
-            this.Controls.Add(this.tbGraviton);
+            this.Controls.Add(this.cbBlackHole);
+            this.Controls.Add(this.cbWind);
+            this.Controls.Add(this.tbSpread);
             this.Controls.Add(this.lblDirection);
             this.Controls.Add(this.tbDirection);
             this.Controls.Add(this.picDisplay);
@@ -105,8 +123,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGraviton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGraviton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSpread)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,8 +135,9 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar tbDirection;
         private System.Windows.Forms.Label lblDirection;
-        private System.Windows.Forms.TrackBar tbGraviton;
-        private System.Windows.Forms.TrackBar tbGraviton2;
+        private System.Windows.Forms.TrackBar tbSpread;
+        private System.Windows.Forms.CheckBox cbWind;
+        private System.Windows.Forms.CheckBox cbBlackHole;
     }
 }
 

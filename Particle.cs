@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
         public float X;
         public float Y;
 
+
         public float SpeedX;
         public float SpeedY;
         public float Life;
@@ -70,8 +71,6 @@ namespace WindowsFormsApp1
         public override void Draw(Graphics g)
         {
             float k = Math.Min(1f, Life / 100);
-
-            // так как k уменьшается от 1 до 0, то порядок цветов обратный
             var color = MixColor(ToColor, FromColor, k);
             var b = new SolidBrush(color);
 
