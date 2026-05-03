@@ -36,6 +36,13 @@
             this.tbSpread = new System.Windows.Forms.TrackBar();
             this.cbWind = new System.Windows.Forms.CheckBox();
             this.cbBlackHole = new System.Windows.Forms.CheckBox();
+            this.btnWindUp = new System.Windows.Forms.Button();
+            this.btnWindLeft = new System.Windows.Forms.Button();
+            this.btnWindDown = new System.Windows.Forms.Button();
+            this.btnWindRight = new System.Windows.Forms.Button();
+            this.btnWindReset = new System.Windows.Forms.Button();
+            this.lblRatio = new System.Windows.Forms.Label();
+            this.lblSpread = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpread)).BeginInit();
@@ -75,7 +82,7 @@
             // 
             // tbSpread
             // 
-            this.tbSpread.Location = new System.Drawing.Point(248, 382);
+            this.tbSpread.Location = new System.Drawing.Point(233, 382);
             this.tbSpread.Maximum = 360;
             this.tbSpread.Name = "tbSpread";
             this.tbSpread.Size = new System.Drawing.Size(163, 56);
@@ -87,7 +94,7 @@
             this.cbWind.AutoSize = true;
             this.cbWind.Checked = true;
             this.cbWind.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbWind.Location = new System.Drawing.Point(471, 396);
+            this.cbWind.Location = new System.Drawing.Point(551, 395);
             this.cbWind.Name = "cbWind";
             this.cbWind.Size = new System.Drawing.Size(69, 20);
             this.cbWind.TabIndex = 4;
@@ -100,7 +107,7 @@
             this.cbBlackHole.AutoSize = true;
             this.cbBlackHole.Checked = true;
             this.cbBlackHole.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbBlackHole.Location = new System.Drawing.Point(606, 396);
+            this.cbBlackHole.Location = new System.Drawing.Point(402, 395);
             this.cbBlackHole.Name = "cbBlackHole";
             this.cbBlackHole.Size = new System.Drawing.Size(113, 20);
             this.cbBlackHole.TabIndex = 5;
@@ -108,11 +115,90 @@
             this.cbBlackHole.UseVisualStyleBackColor = true;
             this.cbBlackHole.CheckedChanged += new System.EventHandler(this.cbBlackHole_CheckedChanged);
             // 
+            // btnWindUp
+            // 
+            this.btnWindUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btnWindUp.Location = new System.Drawing.Point(722, 381);
+            this.btnWindUp.Name = "btnWindUp";
+            this.btnWindUp.Size = new System.Drawing.Size(32, 34);
+            this.btnWindUp.TabIndex = 6;
+            this.btnWindUp.Text = "🔼";
+            this.btnWindUp.UseVisualStyleBackColor = true;
+            this.btnWindUp.Click += new System.EventHandler(this.btnWindUp_Click);
+            // 
+            // btnWindLeft
+            // 
+            this.btnWindLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btnWindLeft.Location = new System.Drawing.Point(684, 421);
+            this.btnWindLeft.Name = "btnWindLeft";
+            this.btnWindLeft.Size = new System.Drawing.Size(32, 34);
+            this.btnWindLeft.TabIndex = 7;
+            this.btnWindLeft.Text = "◀️";
+            this.btnWindLeft.UseVisualStyleBackColor = true;
+            this.btnWindLeft.Click += new System.EventHandler(this.btnWindLeft_Click);
+            // 
+            // btnWindDown
+            // 
+            this.btnWindDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btnWindDown.Location = new System.Drawing.Point(722, 421);
+            this.btnWindDown.Name = "btnWindDown";
+            this.btnWindDown.Size = new System.Drawing.Size(32, 34);
+            this.btnWindDown.TabIndex = 8;
+            this.btnWindDown.Text = "🔽";
+            this.btnWindDown.UseVisualStyleBackColor = true;
+            this.btnWindDown.Click += new System.EventHandler(this.btnWindDown_Click);
+            // 
+            // btnWindRight
+            // 
+            this.btnWindRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.btnWindRight.Location = new System.Drawing.Point(760, 421);
+            this.btnWindRight.Name = "btnWindRight";
+            this.btnWindRight.Size = new System.Drawing.Size(32, 34);
+            this.btnWindRight.TabIndex = 9;
+            this.btnWindRight.Text = "▶️";
+            this.btnWindRight.UseVisualStyleBackColor = true;
+            this.btnWindRight.Click += new System.EventHandler(this.btnWindRight_Click);
+            // 
+            // btnWindReset
+            // 
+            this.btnWindReset.Location = new System.Drawing.Point(551, 422);
+            this.btnWindReset.Name = "btnWindReset";
+            this.btnWindReset.Size = new System.Drawing.Size(113, 34);
+            this.btnWindReset.TabIndex = 10;
+            this.btnWindReset.Text = "Reset Wind";
+            this.btnWindReset.UseVisualStyleBackColor = true;
+            this.btnWindReset.Click += new System.EventHandler(this.btnWindReset_Click);
+            // 
+            // lblRatio
+            // 
+            this.lblRatio.AutoSize = true;
+            this.lblRatio.Location = new System.Drawing.Point(59, 422);
+            this.lblRatio.Name = "lblRatio";
+            this.lblRatio.Size = new System.Drawing.Size(97, 16);
+            this.lblRatio.TabIndex = 11;
+            this.lblRatio.Text = "Направление";
+            // 
+            // lblSpread
+            // 
+            this.lblSpread.AutoSize = true;
+            this.lblSpread.Location = new System.Drawing.Point(286, 422);
+            this.lblSpread.Name = "lblSpread";
+            this.lblSpread.Size = new System.Drawing.Size(63, 16);
+            this.lblSpread.TabIndex = 12;
+            this.lblSpread.Text = "Разброс";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 464);
+            this.Controls.Add(this.lblSpread);
+            this.Controls.Add(this.lblRatio);
+            this.Controls.Add(this.btnWindReset);
+            this.Controls.Add(this.btnWindRight);
+            this.Controls.Add(this.btnWindDown);
+            this.Controls.Add(this.btnWindLeft);
+            this.Controls.Add(this.btnWindUp);
             this.Controls.Add(this.cbBlackHole);
             this.Controls.Add(this.cbWind);
             this.Controls.Add(this.tbSpread);
@@ -138,6 +224,13 @@
         private System.Windows.Forms.TrackBar tbSpread;
         private System.Windows.Forms.CheckBox cbWind;
         private System.Windows.Forms.CheckBox cbBlackHole;
+        private System.Windows.Forms.Button btnWindUp;
+        private System.Windows.Forms.Button btnWindLeft;
+        private System.Windows.Forms.Button btnWindDown;
+        private System.Windows.Forms.Button btnWindRight;
+        private System.Windows.Forms.Button btnWindReset;
+        private System.Windows.Forms.Label lblRatio;
+        private System.Windows.Forms.Label lblSpread;
     }
 }
 

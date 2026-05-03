@@ -76,32 +76,8 @@ namespace WindowsFormsApp1
             // колесо мыши - меняем радиус радара
             // PictureBox сам события колеса не получает, поэтому подписываемся на форму
             this.MouseWheel += Form1_MouseWheel;
-
-            this.KeyPreview = true;
-            this.KeyDown += Form1_KeyDown;
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            // если ветер выключен галочкой ничего не делается
-            if (!windEnabled && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right
-                              || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
-            {
-                return;
-            }
-
-            switch (e.KeyCode)
-            {
-                case Keys.Left: emitter.WindX -= WindStep; break;
-                case Keys.Right: emitter.WindX += WindStep; break;
-                case Keys.Up: emitter.WindY -= WindStep; break;
-                case Keys.Down: emitter.WindY += WindStep; break;
-                case Keys.Space: // пробел -- штиль
-                    emitter.WindX = 0;
-                    emitter.WindY = 0;
-                    break;
-            }
-        }
         private void cbWind_CheckedChanged(object sender, EventArgs e)
         {
             windEnabled = cbWind.Checked;
@@ -169,6 +145,36 @@ namespace WindowsFormsApp1
         private void tbSpread_Scroll(object sender, EventArgs e)
         {
             emitter.Spreading = tbSpread.Value;
+        }
+
+        private void btnWindUp_Click(object sender, EventArgs e)
+        {
+            if (!windEnabled) return;
+            emitter.WindY -= WindStep;
+        }
+
+        private void btnWindRight_Click(object sender, EventArgs e)
+        {
+            if (!windEnabled) return;
+            emitter.WindX += WindStep;
+        }
+
+        private void btnWindDown_Click(object sender, EventArgs e)
+        {
+            if (!windEnabled) return;
+            emitter.WindY += WindStep;
+        }
+
+        private void btnWindLeft_Click(object sender, EventArgs e)
+        {
+            if (!windEnabled) return;
+            emitter.WindX -= WindStep;
+        }
+
+        private void btnWindReset_Click(object sender, EventArgs e)
+        {
+            emitter.WindX = 0;
+            emitter.WindY = 0;
         }
     }
 }
