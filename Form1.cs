@@ -92,6 +92,51 @@ namespace WindowsFormsApp1
         {
             blackHole.Enabled = cbBlackHole.Checked;
         }
+
+        private void DrawWindCompass(Graphics g)
+        {
+            int cx = picDisplay.Width - 60;   // правый верхний угол
+            int cy = 60;
+            int radius = 35;
+
+            // фон кружок
+            using (var pen = new Pen(Color.Black, 1))
+                g.DrawEllipse(pen, cx - radius, cy - radius, radius * 2, radius * 2);
+
+            // длина и направление вектора ветра
+            float wx = emitter.WindX;
+            float wy = emitter.WindY;
+            float magnitude = (float)Math.Sqrt(wx * wx + wy * wy);
+
+            if (magnitude > 0.01f) 
+            {
+                float maxLen = radius - 6;
+                float scaled = Math.Min(1f, magnitude / 5f);
+                float dx = wx / magnitude * maxLen * scaled;
+                float dy = wy / magnitude * maxLen * scaled;
+
+                // отрисовка
+                using (var pen = new Pen(Color.DarkRed, 3))
+                {
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+                    g.DrawLine(pen, cx, cy, cx + dx, cy + dy); // основные координаты + координаты изменеиня направления ветра
+                }
+            }
+            else
+            {
+                // штиль точка центровая
+                using (var dot = new SolidBrush(Color.Gray))
+                    g.FillEllipse(dot, cx - 3, cy - 3, 6, 6);
+            }
+            using (var f = new Font("Arial", 8, FontStyle.Bold))
+            using (var br = new SolidBrush(Color.Black))
+            {
+                var label = magnitude > 0.01f ? $"ветер {magnitude:0.0}" : "штиль";
+                var size = g.MeasureString(label, f);
+                g.DrawString(label, f, br, cx - size.Width / 2, cy + radius + 2);
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             emitter.UpdateState(); // каждый тик обновляем систему
@@ -100,6 +145,7 @@ namespace WindowsFormsApp1
             {
                 g.Clear(Color.White);
                 emitter.Render(g); // рендерим систему
+                DrawWindCompass(g);
             }
 
             picDisplay.Invalidate();

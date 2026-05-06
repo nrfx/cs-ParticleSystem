@@ -16,8 +16,8 @@ namespace WindowsFormsApp1
         public float GravitationX = 0;
         public float GravitationY = 1;
         public int ParticlesCount = 500;
-        public float WindX = 0; // постоянная горизонтальная сила (управляется стрелками)
-        public float WindY = 0; // постоянная вертикальная сила
+        public float WindX = 0; // постоянная горизонтальная сила ветра
+        public float WindY = 0; // постоянная вертикальная сила ветра
 
         public int X; // координата X центра эмиттера, будем ее использовать вместо MousePositionX
         public int Y; // соответствующая координата Y 
